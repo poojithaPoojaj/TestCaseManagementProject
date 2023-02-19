@@ -30,4 +30,15 @@ public class TestCase {
     String name,description;
     List<String> stepsToReproduce;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setStepsToReproduce(List<String> stepsToReproduce) {
+        this.stepsToReproduce = stepsToReproduce;
+    }
 }

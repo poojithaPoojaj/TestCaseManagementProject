@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.myproject.testcasemanagement.TestSuiteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-19T06:03:17" hostname="LAPTOP-CLGBP6P7" time="0.018">
+<testsuite name="com.myproject.testcasemanagement.TestSuiteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-19T12:16:46" hostname="LAPTOP-CLGBP6P7" time="0.011">
   <properties/>
-  <testcase name="userShouldNotAbleToCreateNewTestCaseWithDuplicateName" classname="com.myproject.testcasemanagement.TestSuiteTest" time="0.018"/>
-  <system-out><![CDATA[com.myproject.testcasemanagement.models.TestCase@5890e879
-]]></system-out>
+  <testcase name="userShouldNotProvideDuplicateNewNameWhileEditing" classname="com.myproject.testcasemanagement.TestSuiteTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

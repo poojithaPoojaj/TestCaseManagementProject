@@ -3,6 +3,8 @@ package com.myproject.testcasemanagement;
 import com.myproject.testcasemanagement.exceptions.InvalidTestCaseException;
 import com.myproject.testcasemanagement.models.TestCase;
 import com.myproject.testcasemanagement.models.TestCaseCreator;
+import com.myproject.testcasemanagement.models.TestCaseEditor;
+import com.myproject.testcasemanagement.models.TestSuite;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -48,6 +50,21 @@ public class TestCaseTest {
         Assert.assertEquals("TEst1",testCase.getName());
         Assert.assertEquals("This is description of test",testCase.getDescription());
         Assert.assertEquals(stepsToReproduce,testCase.getStepsToReproduce());
+    }
+    @Test(expectedExceptions = InvalidTestCaseException.class)
+    public void userShouldNotAbleToEditTestCaseWithEmptyName() {
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Give not existing testcase name to edit along with this new details to edit");
+        stepsToReproduce.add("check for the testcase name in the testCasesList");
+        stepsToReproduce.add("if testCase exist with the name we are going to edit and do changes");
+        stepsToReproduce.add("else throwing exception 'testCase not exist with the name' ");
+
+        TestCase testCase = testCaseCreator.createTest("helo", "desc", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase);
+        TestCaseEditor testCaseEditor = new TestCaseEditor();
+        testCaseEditor.editTestCase(testSuite,"hello", "", "des", stepsToReproduce);
     }
 
 

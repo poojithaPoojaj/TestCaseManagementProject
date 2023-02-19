@@ -1,6 +1,7 @@
 package com.myproject.testcasemanagement.models;
 
 import com.myproject.testcasemanagement.TestCaseValidator;
+import com.myproject.testcasemanagement.exceptions.DuplicateTestCaseException;
 import com.myproject.testcasemanagement.exceptions.InvalidTestCaseException;
 
 import java.util.List;

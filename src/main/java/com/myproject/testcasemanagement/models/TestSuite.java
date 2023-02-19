@@ -24,4 +24,11 @@ public class TestSuite {
     public List<TestCase> getTestCaseList() {
         return testCaseList;
     }
+    public List<String> getAllTestCaseNamesList(TestSuite testSuite) {
+        List<String> testCaseNamesList = new ArrayList<>();
+        for (TestCase testCase : testSuite.getTestCaseList()) {
+            testCaseNamesList.add(testCase.getName());
+        }
+        return testCaseNamesList;
+    }
 }
