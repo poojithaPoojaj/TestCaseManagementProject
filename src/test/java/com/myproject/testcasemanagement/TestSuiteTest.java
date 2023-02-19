@@ -2,10 +2,7 @@ package com.myproject.testcasemanagement;
 
 import com.myproject.testcasemanagement.exceptions.DuplicateTestCaseException;
 import com.myproject.testcasemanagement.exceptions.InvalidTestCaseException;
-import com.myproject.testcasemanagement.models.TestCase;
-import com.myproject.testcasemanagement.models.TestCaseCreator;
-import com.myproject.testcasemanagement.models.TestCaseEditor;
-import com.myproject.testcasemanagement.models.TestSuite;
+import com.myproject.testcasemanagement.models.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,19 +12,20 @@ import java.util.List;
 
 public class TestSuiteTest {
     @Test(expectedExceptions = DuplicateTestCaseException.class)
-    public void userShouldNotAbleToCreateNewTestCaseWithDuplicateName(){
-        TestCaseCreator testCaseCreator=new TestCaseCreator();
-        List<String> stepsToReproduce=new ArrayList<>();
+    public void userShouldNotAbleToCreateNewTestCaseWithDuplicateName() {
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
         stepsToReproduce.add("Create new TestCase");
         stepsToReproduce.add("add name ");
         stepsToReproduce.add("add description");
         stepsToReproduce.add("execute test");
 
-        TestCase testCase1=testCaseCreator.createTest("Test1","This is description of test",stepsToReproduce);;
+        TestCase testCase1 = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
+        ;
 
-        TestCase testCase2=testCaseCreator.createTest("Test1","This is description of test",stepsToReproduce);
+        TestCase testCase2 = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
 
-        TestSuite testSuite=new TestSuite();
+        TestSuite testSuite = new TestSuite();
         testSuite.store(testCase1);
         testSuite.store(testCase2);
     }
@@ -45,9 +43,10 @@ public class TestSuiteTest {
         TestSuite testSuite = new TestSuite();
         testSuite.store(testCase);
         TestCaseEditor testCaseEditor = new TestCaseEditor();
-        testCaseEditor.editTestCase(testSuite,"hello", "helllllo", "des", stepsToReproduce);
+        testCaseEditor.editTestCase(testSuite, "hello", "helllllo", "des", stepsToReproduce);
 
     }
+
     @Test
     public void checkEditedDetails() {
         TestCaseCreator testCaseCreator = new TestCaseCreator();
@@ -61,30 +60,68 @@ public class TestSuiteTest {
         TestSuite testSuite = new TestSuite();
         testSuite.store(testCase);
         TestCaseEditor testCaseEditor = new TestCaseEditor();
-        testCaseEditor.editTestCase(testSuite,"testname", "TestName", "descriptions",stepsToReproduce);
-        Assert.assertEquals("TestName",testCase.getName());
-        Assert.assertEquals("descriptions",testCase.getDescription());
-        Assert.assertEquals(stepsToReproduce,testCase.getStepsToReproduce());
+        testCaseEditor.editTestCase(testSuite, "testname", "TestName", "descriptions", stepsToReproduce);
+        Assert.assertEquals("TestName", testCase.getName());
+        Assert.assertEquals("descriptions", testCase.getDescription());
+        Assert.assertEquals(stepsToReproduce, testCase.getStepsToReproduce());
     }
+
     @Test
-    public void userShouldNotProvideDuplicateNewNameWhileEditing(){
-        TestCaseCreator testCaseCreator=new TestCaseCreator();
-        List<String> stepsToReproduce=new ArrayList<>();
+    public void userShouldNotProvideDuplicateNewNameWhileEditing() {
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
         stepsToReproduce.add("Create new TestCase");
         stepsToReproduce.add("add name ");
         stepsToReproduce.add("add description");
         stepsToReproduce.add("execute test");
 
-        TestCase testCase1=testCaseCreator.createTest("Test1","This is description of test",stepsToReproduce);;
+        TestCase testCase1 = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
+        ;
 
-        TestCase testCase2=testCaseCreator.createTest("Test2","This is description of test",stepsToReproduce);
+        TestCase testCase2 = testCaseCreator.createTest("Test2", "This is description of test", stepsToReproduce);
 
-        TestSuite testSuite=new TestSuite();
+        TestSuite testSuite = new TestSuite();
         testSuite.store(testCase1);
         testSuite.store(testCase2);
         TestCaseEditor testCaseEditor = new TestCaseEditor();
-        testCaseEditor.editTestCase(testSuite,"Test1", "Test1", "descriptions",stepsToReproduce);
+        testCaseEditor.editTestCase(testSuite, "Test1", "Test1 ", "descriptions", stepsToReproduce);
 
+    }
 
+    @Test
+    public void userShouldProvideValidTestCaseNameToDelete() {
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Create new TestCase");
+        stepsToReproduce.add("add name ");
+        stepsToReproduce.add("add description");
+        stepsToReproduce.add("add steps to reproduce");
+        stepsToReproduce.add("search for the test case with the name to delete");
+        stepsToReproduce.add("delete test case");
+        TestCase testCase = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase);
+        TestCaseRemover testCaseRemover = new TestCaseRemover();
+        testCaseRemover.removeTestCase(testSuite, "Test12");
+
+    }
+    @Test
+    public void checkDeletedTestCase(){
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Create new TestCase");
+        stepsToReproduce.add("add name ");
+        stepsToReproduce.add("add description");
+        stepsToReproduce.add("add steps to reproduce");
+        stepsToReproduce.add("search for the test case with the name to delete");
+        stepsToReproduce.add("delete test case");
+        TestCase testCase1 = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase1);
+        TestCase testCase2 = testCaseCreator.createTest("Test2", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase2);
+        TestCaseRemover testCaseRemover = new TestCaseRemover();
+        testCaseRemover.removeTestCase(testSuite,"Test1");
+        Assert.assertFalse(testSuite.getAllTestCaseNamesList(testSuite).contains("Test1"));
     }
 }

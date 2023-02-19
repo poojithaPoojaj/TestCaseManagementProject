@@ -52,6 +52,22 @@ public class TestCaseTest {
         Assert.assertEquals(stepsToReproduce,testCase.getStepsToReproduce());
     }
     @Test(expectedExceptions = InvalidTestCaseException.class)
+    public void userShouldNotAbleToEditTestCaseWithNullAsNewName() {
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Give not existing testcase name to edit along with this new details to edit");
+        stepsToReproduce.add("check for the testcase name in the testCasesList");
+        stepsToReproduce.add("if testCase exist with the name we are going to edit and do changes");
+        stepsToReproduce.add("else throwing exception 'testCase not exist with the name' ");
+
+        TestCase testCase = testCaseCreator.createTest("helo", "desc", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase);
+        TestCaseEditor testCaseEditor = new TestCaseEditor();
+        testCaseEditor.editTestCase(testSuite,"hello", null, "des", stepsToReproduce);
+    }
+
+    @Test(expectedExceptions = InvalidTestCaseException.class)
     public void userShouldNotAbleToEditTestCaseWithEmptyName() {
         TestCaseCreator testCaseCreator = new TestCaseCreator();
         List<String> stepsToReproduce = new ArrayList<>();
