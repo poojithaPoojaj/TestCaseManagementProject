@@ -124,4 +124,45 @@ public class TestSuiteTest {
         testCaseRemover.removeTestCase(testSuite,"Test1");
         Assert.assertFalse(testSuite.getAllTestCaseNamesList(testSuite).contains("Test1"));
     }
+    @Test
+    public void viewAllTestCasesInOrder(){
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Create new TestCase");
+        stepsToReproduce.add("add name ");
+        stepsToReproduce.add("add description");
+        stepsToReproduce.add("add steps to reproduce");
+        stepsToReproduce.add("Again add few new TestCases");
+        stepsToReproduce.add("sort and display all testCases and compare with the test");
+        TestCase testCase1 = testCaseCreator.createTest("TestC", "This is description of test", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase1);
+        TestCase testCase2 = testCaseCreator.createTest("TestD", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase2);
+        TestCase testCase3 = testCaseCreator.createTest("TestA", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase3);
+        TestCase testCase4 = testCaseCreator.createTest("TestB", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase4);
+         TestCaseViewer testCaseViewer=new TestCaseViewer();
+
+         List<String> formattedTestCases=testCaseViewer.sortAndGetAllTestsInFormat(testSuite);
+        Assert.assertEquals("Name:TestA , Description:This is description of test ," +
+                " StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce , " +
+                "Again add few new TestCases , sort and display all testCases and compare with the test  ]",
+                formattedTestCases.get(0));
+        Assert.assertEquals("Name:TestB , Description:This is description of test ," +
+                " StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce ," +
+                " Again add few new TestCases , sort and display all testCases and compare with the test  ]",
+                formattedTestCases.get(1));
+        Assert.assertEquals("Name:TestC , Description:This is description of test , " +
+                "StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce , " +
+                "" + "Again add few new TestCases , sort and display all testCases and compare with the test  ]",
+                formattedTestCases.get(2));
+        Assert.assertEquals("Name:TestD , Description:This is description of test ," +
+                " StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce , " +
+                "Again add few new TestCases , sort and display all testCases and compare with the test  ]",
+                formattedTestCases.get(3));
+
+
+    }
 }

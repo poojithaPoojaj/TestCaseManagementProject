@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.myproject.testcasemanagement.TestSuiteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-19T12:59:27" hostname="LAPTOP-CLGBP6P7" time="0.015">
+<testsuite name="com.myproject.testcasemanagement.TestSuiteTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-20T04:44:23" hostname="LAPTOP-CLGBP6P7" time="0.016">
   <properties/>
-  <testcase name="checkDeletedTestCase" classname="com.myproject.testcasemanagement.TestSuiteTest" time="0.015"/>
-  <system-out><![CDATA[Test1 This is description of test
-]]></system-out>
+  <testcase name="viewAllTestCasesInOrder" classname="com.myproject.testcasemanagement.TestSuiteTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

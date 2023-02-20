@@ -3,7 +3,9 @@ package com.myproject.testcasemanagement.models;
 import com.myproject.testcasemanagement.TestCaseValidator;
 import com.myproject.testcasemanagement.exceptions.InvalidTestCaseException;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class TestCase {
     public TestCase(){
@@ -30,6 +32,12 @@ public class TestCase {
     String name,description;
     List<String> stepsToReproduce;
 
+
+    public void setDetails(TestCase testCase,String name,String description,List<String> stepsToReproduce){
+        testCase.setName(name);
+        testCase.setDescription(description);
+        testCase.stepsToReproduce=stepsToReproduce;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -41,4 +49,5 @@ public class TestCase {
     public void setStepsToReproduce(List<String> stepsToReproduce) {
         this.stepsToReproduce = stepsToReproduce;
     }
+
 }

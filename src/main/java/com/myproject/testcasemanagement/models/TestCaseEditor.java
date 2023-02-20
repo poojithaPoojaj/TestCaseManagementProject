@@ -19,9 +19,7 @@ public class TestCaseEditor {
         }
        for(TestCase testCase:testSuite.getTestCaseList()){
             if(testCase.getName().equals(editTestCaseName)){
-               testCase.setName(name);
-               testCase.setDescription(description);
-               testCase.setStepsToReproduce(stepsToReproduce);
+               testCase.setDetails(testCase,name,description,stepsToReproduce);
                 return;
             }
        }
