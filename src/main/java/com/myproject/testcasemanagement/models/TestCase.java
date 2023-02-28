@@ -8,6 +8,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class TestCase {
+    String name,description;
+    List<String> stepsToReproduce;
+
+    public int getPriority() {
+        return priority;
+    }
+
+    int priority;
     public TestCase(){
 
     }
@@ -15,6 +23,12 @@ public class TestCase {
         this.name=name;
         this.description=description;
         this.stepsToReproduce=stepsToReproduce;
+    }
+    public TestCase(String name, String description, List<String> stepsToReproduce,int priority) {
+        this.name=name;
+        this.description=description;
+        this.stepsToReproduce=stepsToReproduce;
+        this.priority=priority;
     }
 
     public String getName() {
@@ -28,10 +42,6 @@ public class TestCase {
     public List<String> getStepsToReproduce() {
         return stepsToReproduce;
     }
-
-    String name,description;
-    List<String> stepsToReproduce;
-
 
     public void setDetails(TestCase testCase,String name,String description,List<String> stepsToReproduce){
         testCase.setName(name);
@@ -48,6 +58,15 @@ public class TestCase {
 
     public void setStepsToReproduce(List<String> stepsToReproduce) {
         this.stepsToReproduce = stepsToReproduce;
+    }
+
+    public String getTestCaseInFormat(TestCase testCase){
+        String steps = "";
+        for (String s : testCase.getStepsToReproduce()) {
+            steps += s;
+            steps += " , ";
+        }
+        return String.format("Name:%s , Description:%s , StepsToReProduce:[ %s ]", testCase.getName(), testCase.getDescription(), steps.substring(0, steps.length() - 2));
     }
 
 }

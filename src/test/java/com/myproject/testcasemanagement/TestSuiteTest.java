@@ -12,7 +12,7 @@ import java.util.List;
 
 public class TestSuiteTest {
     @Test(expectedExceptions = DuplicateTestCaseException.class)
-    public void userShouldNotAbleToCreateNewTestCaseWithDuplicateName() {
+        public void userShouldNotAbleToCreateNewTestCaseWithDuplicateName() {
         TestCaseCreator testCaseCreator = new TestCaseCreator();
         List<String> stepsToReproduce = new ArrayList<>();
         stepsToReproduce.add("Create new TestCase");
@@ -31,7 +31,7 @@ public class TestSuiteTest {
     }
 
     @Test(expectedExceptions = InvalidTestCaseException.class)
-    public void userIsGoingToGiveNotExistingTestCaseName() {
+    public void userIsNotAbleToGiveNotExistingTestCaseName() {
         TestCaseCreator testCaseCreator = new TestCaseCreator();
         List<String> stepsToReproduce = new ArrayList<>();
         stepsToReproduce.add("Give not existing testcase name to edit along with this new details to edit");
@@ -96,6 +96,7 @@ public class TestSuiteTest {
         stepsToReproduce.add("add name ");
         stepsToReproduce.add("add description");
         stepsToReproduce.add("add steps to reproduce");
+        stepsToReproduce.add("add few new Test Cases");
         stepsToReproduce.add("search for the test case with the name to delete");
         stepsToReproduce.add("delete test case");
         TestCase testCase = testCaseCreator.createTest("Test1", "This is description of test", stepsToReproduce);
@@ -161,8 +162,36 @@ public class TestSuiteTest {
         Assert.assertEquals("Name:TestD , Description:This is description of test ," +
                 " StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce , " +
                 "Again add few new TestCases , sort and display all testCases and compare with the test  ]",
-                formattedTestCases.get(3));
+                 formattedTestCases.get(3));
 
 
     }
+    @Test
+    public void searchTestwithValidTestName(){
+        TestCaseCreator testCaseCreator = new TestCaseCreator();
+        List<String> stepsToReproduce = new ArrayList<>();
+        stepsToReproduce.add("Create new TestCase");
+        stepsToReproduce.add("add name ");
+        stepsToReproduce.add("add description");
+        stepsToReproduce.add("add steps to reproduce");
+        stepsToReproduce.add("add few new Test Cases");
+        stepsToReproduce.add("sort and search for testCase and compare with the test");
+        TestCase testCase1 = testCaseCreator.createTest("TestC", "This is description of test", stepsToReproduce);
+        TestSuite testSuite = new TestSuite();
+        testSuite.store(testCase1);
+        TestCase testCase2 = testCaseCreator.createTest("TestD", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase2);
+        TestCase testCase3 = testCaseCreator.createTest("TestA", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase3);
+        TestCase testCase4 = testCaseCreator.createTest("TestB", "This is description of test", stepsToReproduce);
+        testSuite.store(testCase4);
+        TestCaseFinder testCaseFinder=new TestCaseFinder();
+        String testCaseInFormat=testCaseFinder.findTestCase(testSuite,"TestD");
+        Assert.assertEquals("Name:TestD , Description:This is description of test , " +
+                "StepsToReProduce:[ Create new TestCase , add name  , add description , add steps to reproduce , " +
+                "add few new Test Cases , sort and search for testCase and compare with the test  ]",
+                testCaseInFormat);
+
+    }
+
 }

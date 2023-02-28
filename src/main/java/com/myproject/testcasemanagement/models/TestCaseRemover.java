@@ -12,7 +12,6 @@ public class TestCaseRemover {
             for(TestCase testCase:testCases){
                 if(testCase.getName().equals(name))
                 {
-                    System.out.println(testCase.getName()+" "+testCase.getDescription());
                  testCases.remove(testCase);
                  return;
                 }

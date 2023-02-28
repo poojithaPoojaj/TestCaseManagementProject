@@ -47,13 +47,7 @@ public class TestSuite {
 
     public List<String> getFormattedTestCaseList(TestSuite testSuite) {
         for (TestCase testCase : testSuite.getTestCaseList()) {
-            String steps = "";
-            for (String s : testCase.getStepsToReproduce()) {
-                steps += s;
-                steps += " , ";
-            }
-            formatTestCaseList.add(String.format("Name:%s , Description:%s , StepsToReProduce:[ %s ]", testCase.getName(), testCase.getDescription(), steps.substring(0, steps.length() - 2)));
-
+            formatTestCaseList.add(testCase.getTestCaseInFormat(testCase));
         }
         return formatTestCaseList;
     }
