@@ -30,17 +30,17 @@ The Project will allow testers to create, edit, and delete test cases, as well a
 ### Tests (Tester)
 #### 1.TestCaseTest
       It Contains All the TestCase Related Tests like
-       1.  userShouldBeAbleToCreateTest()
-       2.  userShouldNotAbleToCreateTestWithEmptyValue()
-       3.  userShouldNotAbleToCreateTestWithNullValue()
-       4.  userShouldNotAbleToEditTestCaseWithNullAsNewName()
-       5.  userShouldNotAbleToEditTestCaseWithEmptyName()
+       1. userShouldBeAbleToCreateTest()
+       2. userShouldNotAbleToCreateTestWithEmptyValue()
+       3. userShouldNotAbleToCreateTestWithNullValue()
+       4. userShouldNotAbleToEditTestCaseWithNullAsNewName()
+       5. userShouldNotAbleToEditTestCaseWithEmptyName()
 #### 2.TestSuiteTest
       It Contains All the TestSuite Related Tests
-       1.  userShouldNotAbleToCreateNewTestCaseWithDuplicateName()
-       2.  userIsNotAbleToGiveNotExistingTestCaseName()
-       3.  checkEditedDetails()
-       4.  userShouldNotProvideDuplicateNewNameWhileEditing()
+       1. userShouldNotAbleToCreateNewTestCaseWithDuplicateName()
+       2. userIsNotAbleToGiveNotExistingTestCaseName()
+       3. checkEditedDetails()
+       4. userShouldNotProvideDuplicateNewNameWhileEditing()
        5. userShouldProvideValidTestCaseNameToDelete()
        6. checkDeletedTestCase()
        7. viewAllTestCasesInOrder()
