@@ -88,7 +88,7 @@ public class TestSuiteTest {
 
     }
 
-    @Test
+    @Test(expectedExceptions = InvalidTestCaseException.class)
     public void userShouldProvideValidTestCaseNameToDelete() {
         TestCaseCreator testCaseCreator = new TestCaseCreator();
         List<String> stepsToReproduce = new ArrayList<>();

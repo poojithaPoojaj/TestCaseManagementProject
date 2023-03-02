@@ -1,5 +1,7 @@
 # Test Case Management Project
-
+ 
+## Description
+The Project will allow testers to create, edit, and delete test cases, as well as view all test cases and search for specific test cases.
 ## Installations:
 * Java JDK
 * Gradle
@@ -26,19 +28,23 @@
 #### 7.TestCase Validator
        It Validate that testCase name is unique and not exist any testcase with this name in TestSuite
 ### Tests (Tester)
+#### 1.TestCaseTest
+      It Contains All the TestCase Related Tests like
        1.  userShouldBeAbleToCreateTest()
        2.  userShouldNotAbleToCreateTestWithEmptyValue()
        3.  userShouldNotAbleToCreateTestWithNullValue()
        4.  userShouldNotAbleToEditTestCaseWithNullAsNewName()
        5.  userShouldNotAbleToEditTestCaseWithEmptyName()
-       6.  userShouldNotAbleToCreateNewTestCaseWithDuplicateName()
-       7.  userIsNotAbleToGiveNotExistingTestCaseName()
-       8.  checkEditedDetails()
-       9.  userShouldNotProvideDuplicateNewNameWhileEditing()
-       10. userShouldProvideValidTestCaseNameToDelete()
-       11. checkDeletedTestCase()
-       12. viewAllTestCasesInOrder()
-       13. searchTestwithValidTestName()
+#### 2.TestSuiteTest
+      It Contains All the TestSuite Related Tests
+       1.  userShouldNotAbleToCreateNewTestCaseWithDuplicateName()
+       2.  userIsNotAbleToGiveNotExistingTestCaseName()
+       3.  checkEditedDetails()
+       4.  userShouldNotProvideDuplicateNewNameWhileEditing()
+       5. userShouldProvideValidTestCaseNameToDelete()
+       6. checkDeletedTestCase()
+       7. viewAllTestCasesInOrder()
+       8. searchTestwithValidTestName()
         
 
 # Authors
